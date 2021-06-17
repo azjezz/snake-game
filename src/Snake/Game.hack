@@ -57,7 +57,7 @@ final class Game {
     };
 
     $game_awaitable = async {
-      while ($running->value) {
+      do {
         $now = \microtime(true);
 
         try {
@@ -90,35 +90,26 @@ final class Game {
               'crash',
             );
 
-          await $output->getCursor()->move(4, $this->height);
-          await $output->write(
-            '<background> Press any key to exit '.
-            Str\repeat('=', $this->width - 30).
-            '</>',
-          );
+          await $input_awaitable;
 
           return;
         }
 
-        await $output->getCursor()->move(4, $this->height);
+        await $output->getCursor()->move(2, $this->height - 2);
+        await $output->write(
+          Str\format('<border>score: %d</>', $this->board->getScore()),
+        );
 
-        $speedup = Math\minva(1, $this->board->getScore() / 10);
+        $speedup = Math\minva(1.5, $this->board->getScore() / 10);
         $tick_duration = self::TICK_DURATION -
           self::TICK_DURATION / 2 * $speedup;
-
-        await $output->write(Str\format(
-          '<background> score: %d / speedup: %f / tick duration: %fms / lastest move: %s </>',
-          $this->board->getScore(),
-          (float)$speedup,
-          (float)$tick_duration,
-          $lastest_move->value,
-        ));
-
         $leftover = $tick_duration - (\microtime(true) - $now);
         $leftover_time = $leftover * 1000000;
 
-        await Asio\usleep((int)$leftover_time);
-      }
+        if ($leftover_time >= 1) {
+          await Asio\usleep((int)$leftover_time);
+        }
+      } while ($running->value);
     };
 
     concurrent {

@@ -4,7 +4,7 @@ use namespace HH\Lib\{PseudoRandom, Str, Vec};
 use namespace Nuxed\Console\Output;
 
 final class Board {
-  const int GROWTH_RATE = 6;
+  const int GROWTH_RATE = 4;
 
   private int $score = 0;
   private dict<int, vec<int>> $board = dict[];
@@ -35,24 +35,28 @@ final class Board {
       $this->board[$i] = Vec\fill($this->height, 0);
     }
 
-    $border = Str\repeat('=', $this->width - 2);
+    $border = Str\repeat(' ', $this->width);
     $space = Str\repeat(' ', $this->width - 2);
     $lastOperation = async {
       await $output->getCursor()->move(0, 0);
       await $output->erase(Output\Sequence\Erase::DISPLAY);
 
-      await $output->writeln('<background>|'.$border.'|</background>');
+      await $output->writeln('<border>'.$border.'</>');
     };
 
-    for ($i = 0; $i < $this->height - 2; $i++) {
+    for ($i = 0; $i < $this->height - 4; $i++) {
       $lastOperation = async {
         await $lastOperation;
-        await $output->writeln('<background>│'.$space.'│</background>');
+        await $output->writeln(
+          '<background><border> </>'.$space.'<border> </></>',
+        );
       };
     }
 
     $lastOperation = async {
-      await $output->write('<background>|'.$border.'|</background>');
+      await $output->write('<border>'.$border.'</>');
+      await $output->write('<border>'.$border.'</>');
+      await $output->write('<border>'.$border.'</>');
 
       $this->createGoal();
     };
@@ -109,7 +113,7 @@ final class Board {
       $coordinate->x <= 1 ||
       $coordinate->y < 1 ||
       $coordinate->x >= $this->width ||
-      $coordinate->y >= $this->height - 1
+      $coordinate->y >= $this->height - 3
     ) {
       return false;
     }

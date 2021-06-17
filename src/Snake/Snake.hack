@@ -35,6 +35,9 @@ final class Snake {
   }
 
   public async function tick(Output\IOutput $output): Awaitable<void> {
+    await $output->getCursor()->move($this->head->x, $this->head->y);
+    await $output->write('<snake>█</>');
+
     switch ($this->direction) {
       case Direction::UP:
         $this->head->y--;
@@ -53,7 +56,7 @@ final class Snake {
     $this->grow += $this->board->enter($this->head);
 
     await $output->getCursor()->move($this->head->x, $this->head->y);
-    await $output->write('<snake>█</>');
+    await $output->write('<snake-head>█</>');
     $this->tail[] = clone $this->head;
     if ($this->grow > 0) {
       $this->grow--;
