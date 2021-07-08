@@ -41,13 +41,13 @@ final class Board {
       await $output->getCursor()->move(0, 0);
       await $output->erase(Output\Sequence\Erase::DISPLAY);
 
-      await $output->writeln('<border>'.$border.'</>');
+      await $output->writeLine('<border>'.$border.'</>');
     };
 
     for ($i = 0; $i < $this->height - 4; $i++) {
       $lastOperation = async {
         await $lastOperation;
-        await $output->writeln(
+        await $output->writeLine(
           '<background><border> </>'.$space.'<border> </></>',
         );
       };

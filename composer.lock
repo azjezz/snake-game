@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "132048a9240570e8ad53b1958b975f7b",
+    "content-hash": "29d78dd847c0f266904746584d6c92d8",
     "packages": [
         {
             "name": "azjezz/http-normalizer",
@@ -317,18 +317,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nuxed/nuxed.git",
-                "reference": "5e5dbcf5de1eeb6cdd267d090e18da805760677c"
+                "reference": "4e22eeabaf02c781662dfc1701327ecc9d3c8c01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nuxed/nuxed/zipball/5e5dbcf5de1eeb6cdd267d090e18da805760677c",
-                "reference": "5e5dbcf5de1eeb6cdd267d090e18da805760677c",
+                "url": "https://api.github.com/repos/nuxed/nuxed/zipball/4e22eeabaf02c781662dfc1701327ecc9d3c8c01",
+                "reference": "4e22eeabaf02c781662dfc1701327ecc9d3c8c01",
                 "shasum": ""
             },
             "require": {
                 "azjezz/http-normalizer": "^1.1",
                 "facebook/hack-router": "^0.19.8",
-                "hhvm": "~4.113.0 || ~4.114.0",
+                "hhvm": "^4.113.0",
                 "hhvm/type-assert": "^4.2.0"
             },
             "conflict": {
@@ -388,7 +388,7 @@
                 "source": "https://github.com/nuxed/nuxed/tree/develop",
                 "issues": "https://github.com/nuxed/nuxed/issues"
             },
-            "time": "2021-06-16T17:24:04+00:00"
+            "time": "2021-07-06T11:58:31+00:00"
         }
     ],
     "packages-dev": [
@@ -476,16 +476,16 @@
         },
         {
             "name": "hhvm/hhast",
-            "version": "v4.113.0",
+            "version": "v4.113.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hhvm/hhast.git",
-                "reference": "14539efb5a8953b3428e39cbcbcb5461256e9008"
+                "reference": "b1bee070a577536dccab711841f3e51b1ff45a06"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hhvm/hhast/zipball/14539efb5a8953b3428e39cbcbcb5461256e9008",
-                "reference": "14539efb5a8953b3428e39cbcbcb5461256e9008",
+                "url": "https://api.github.com/repos/hhvm/hhast/zipball/b1bee070a577536dccab711841f3e51b1ff45a06",
+                "reference": "b1bee070a577536dccab711841f3e51b1ff45a06",
                 "shasum": ""
             },
             "require": {
@@ -522,9 +522,9 @@
             "description": "A mutable AST library for Hack with linting and code migrations",
             "support": {
                 "issues": "https://github.com/hhvm/hhast/issues",
-                "source": "https://github.com/hhvm/hhast/tree/v4.113.0"
+                "source": "https://github.com/hhvm/hhast/tree/v4.113.1"
             },
-            "time": "2021-06-08T21:23:11+00:00"
+            "time": "2021-06-21T18:04:24+00:00"
         }
     ],
     "aliases": [],
@@ -538,5 +538,5 @@
         "hhvm": "~4.113.0 || ~4.114.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }
